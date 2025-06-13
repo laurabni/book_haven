@@ -1,0 +1,7 @@
+{{ form_start(form) }}
+    {{ form_widget(form) }}
+{% if book.picture %}
+    <p>Photo actuelle : <img src="{{ asset('uploads/'~book.picture) }}" alt="{{ book.name }}" class="img-thumbnail" style="height: 300px"></p>
+{% endif %}
+    <button class="btn my-2 text-light" style="background-color: #b4761a">{{ button_label|default('Enregistrer') }}</button>
+{{ form_end(form) }}

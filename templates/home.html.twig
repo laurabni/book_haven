@@ -1,0 +1,24 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+    Accueil
+{% endblock %}
+
+{% block body %}
+    <h1 class="text-center p-5">{{ titre }}</h1>
+
+    <p class="w-75 text-center m-auto">Plongez dans un monde où les mots prennent vie et les histoires s'épanouissent sur les pages virtuelles de Book Haven. Notre site web de e-commerce est une oasis pour les passionnés de lecture, offrant une vaste sélection de livres dans tous les genres imaginables. Que vous soyez à la recherche d'un classique intemporel, d'un thriller captivant ou d'une nouveauté intrigante, nous avons de quoi satisfaire toutes vos envies littéraires. Avec une interface conviviale et des fonctionnalités de recherche avancées, explorer notre collection est un plaisir aussi simple qu'inspirant. Rejoignez-nous dans cette aventure littéraire et laissez-vous emporter par la magie des livres sur Book Haven.</p>
+
+    <a href="{{ path('app_book_index') }}" class="btn d-block w-25 m-auto my-4 text-light" style="background-color: #2d6a4f">Découvrir nos livres <i class="bi bi-arrow-right mx-1"></i></a>
+    <div class="card-group mt-5">
+        <div class="card">
+            <img src="{{ asset('images/banner1.jpg') }}" class="card-img-top" alt="librairie_1">
+        </div>
+        <div class="card">
+            <img src="{{ asset('images/banner2.jpg') }}" class="card-img-top" alt="lecture">
+        </div>
+        <div class="card">
+            <img src="{{ asset('images/banner3.jpg') }}" class="card-img-top" alt="librairie_2">
+        </div>
+    </div>
+{% endblock %}

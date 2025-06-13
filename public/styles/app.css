@@ -1,0 +1,23 @@
+body {
+    font-family: "Helvetica Neue", sans-serif;
+}
+
+a {
+    text-decoration: none;
+    color: #2d6a4f;
+}
+
+.nav-link {
+    color: #2d6a4f;
+}
+
+.card-img-top {
+    height: 800px;
+}
+
+.card-group {
+    width: 100%;
+}
+
+.img-fluid {
+}

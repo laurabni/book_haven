@@ -1,0 +1,17 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Cart{% endblock %}
+
+{% block body %}
+    <h1>Cart</h1>
+
+    {% for book in books %}
+        <div>
+            <h2>{{ book.name }}</h2>
+            <p>{{ book.price }}</p>
+            <img src="{{ asset('uploads/'~book.picture) }}" alt="{{ book.name }}">
+        </div>
+    {% else %}
+        <p>No books in the cart.</p>
+    {% endfor %}
+{% endblock %}

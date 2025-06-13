@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Création auteur{% endblock %}
+
+{% block body %}
+    <div class="container my-5">
+        <a href="{{ path('admin') }}"><i class="bi bi-arrow-bar-left"></i> Retour</a>
+
+        <h2 class="my-2">Créer un auteur</h2>
+
+        {{ include('author/_form.html.twig') }}
+    </div>
+{% endblock %}

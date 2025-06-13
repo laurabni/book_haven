@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Création format{% endblock %}
+
+{% block body %}
+    <div class="container my-5">
+        <a href="{{ path('admin') }}"><i class="bi bi-arrow-bar-left"></i> Retour</a>
+
+        <h2>Créer un format</h2>
+
+        {{ include('format/_form.html.twig') }}
+    </div>
+{% endblock %}

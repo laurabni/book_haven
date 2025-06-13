@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Création livre{% endblock %}
+
+{% block body %}
+    <div class="container my-5">
+        <a href="{{ path('app_book_index') }}"><i class="bi bi-arrow-bar-left"></i> Retour aux livres</a>
+
+        <h2>Créer un livre</h2>
+
+        {{ include('book/_form.html.twig') }}
+    </div>
+{% endblock %}

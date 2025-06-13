@@ -1,0 +1,15 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Modication livre{% endblock %}
+
+{% block body %}
+    <div class="container my-5">
+        <a href="{{ path('app_book_index') }}"><i class="bi bi-arrow-bar-left"></i> Retour aux livres</a>
+
+        <h2>Modifier le livre</h2>
+
+        {{ include('book/_form.html.twig', {'button_label': 'Modifier'}) }}
+
+        {{ include('book/_delete_form.html.twig') }}
+    </div>
+{% endblock %}

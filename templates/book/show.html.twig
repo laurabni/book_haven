@@ -1,0 +1,65 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ book.name }}{% endblock %}
+
+{% block body %}
+    <div class="m-5">
+        <a href="{{ path('app_book_index') }}"><i class="bi bi-arrow-bar-left"></i> Retour</a>
+
+        <h1>{{ book.name }}</h1>
+
+        <div class="row">
+            <div class="col-3">
+                <img src="{{ asset('uploads/'~book.picture) }}" alt="{{ book.name }}" class="rounded m-4"
+                     height="400px">
+
+                <p class="text-center fst-italic"><small>Produit commandé {{ count }} fois</small></p>
+            </div>
+            <div class="col-8 m-4">
+
+
+                <h3>Auteur</h3>
+                <p>{{ author.name }}</p>
+
+                <h4>Date de sortie</h4>
+                <p>{{ book.releaseDate }}</p>
+
+                <h4>Prix</h4>
+                <p>{{ book.price }}</p>
+
+                <h4>Catégories</h4>
+                {% for category in categories %}
+                    <p class="badge rounded-pill text-light" style="background-color: #2d6a4f">{{ category.name }}</p>
+                {% endfor %}
+
+                <h4>Formats</h4>
+                {% for format in formats %}
+                    <p class="badge rounded-pill text-light" style="background-color: #b4761a">{{ format.name }}</p>
+                {% endfor %}
+            </div>
+        </div>
+
+        <h3 class="mt-2">Synopsis</h3>
+        <p class="mb-4">{{ book.synopsis }}</p>
+
+        <div class="d-flex">
+            {% if app.user %}
+                <button class="btn me-2" style="background-color: #b4761a"><a
+                            href="{{ path('app_cart_new', {'book_id': book.id}) }}" class="text-light"><i
+                                class="bi bi-cart3"></i> Ajouter au panier</a></button>
+            {% else %}
+                <button class="btn me-2" style="background-color: #b4761a"><a href="{{ path('app_login') }}"
+                                                                              class="text-light">Connectez-vous pour
+                        ajouter au panier</a></button>
+            {% endif %}
+
+
+            {% if is_granted('ROLE_ADMIN') %}
+                <button class="btn me-2" style="background-color: #2d6a4f"><a
+                            href="{{ path('app_book_edit', {'id': book.id}) }}" class="text-light"><i
+                                class="bi bi-pencil-square"></i> Modifier</a></button>
+                {{ include('book/_delete_form.html.twig') }}
+            {% endif %}
+        </div>
+    </div>
+{% endblock %}

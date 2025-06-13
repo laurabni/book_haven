@@ -1,0 +1,103 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Nos livres{% endblock %}
+
+{% block body %}
+    <div class="container">
+        <h1>Nos livres</h1>
+
+        <div class="row">
+            <div class="col-2">
+                <h3 class="text-body-tertiary">Filtres</h3>
+
+                <ul class="list-unstyled w-auto">
+                    <li>
+                        <a href="{{ path('app_book_index') }}" class="fw-bold text-black fs-5">Tous les produits</a>
+                    </li>
+                    <h5 class="mt-2">Auteurs</h5>
+                    {% for author in authors %}
+                        <li>
+                            {% if author.id == app.request.query.get('author') %}
+                                <a class="fw-bold"
+                                   href="{{ path('app_book_index', { author: author.id }) }}"
+                                >{{ author.name }}</a
+                                >
+                            {% else %}
+                                <a
+                                        class="text-black fw-light"
+                                        href="{{ path('app_book_index', { author: author.id }) }}"
+                                >{{ author.name }}</a
+                                >
+                            {% endif %}
+                        </li>
+                    {% endfor %}
+                    <h5 class="mt-2">Catégories</h5>
+                    {% for category in categories %}
+                        <li>
+                            {% if category.id == app.request.query.get('category') %}
+                                <a class="fw-bold"
+                                   href="{{ path('app_book_index', { category: category.id }) }}"
+                                >{{ category.name }}</a
+                                >
+                            {% else %}
+                                <a
+                                        class="text-black fw-light"
+                                        href="{{ path('app_book_index', { category: category.id }) }}"
+                                >{{ category.name }}</a
+                                >
+                            {% endif %}
+                        </li>
+                    {% endfor %}
+                    <h5 class="mt-2">Formats</h5>
+                    {% for format in formats %}
+                        <li>
+                            {% if format.id == app.request.query.get('format') %}
+                                <a class="fw-bold"
+                                   href="{{ path('app_book_index', { format: format.id }) }}"
+                                >{{ format.name }}</a
+                                >
+                            {% else %}
+                                <a
+                                        class="text-black fw-light"
+                                        href="{{ path('app_book_index', { format: format.id }) }}"
+                                >{{ format.name }}</a
+                                >
+                            {% endif %}
+                        </li>
+                    {% endfor %}
+                </ul>
+            </div>
+
+            <div class="col-10">
+                <div class="row d-flex justify-content-center">
+                    {% for book in books %}
+                        <div class="card mb-3 me-3" style="max-width: 520px;">
+                            <div class="row g-0">
+                                <div class="col-md-4">
+                                    <img src="{{ asset('uploads/'~book.picture) }}" class="img-fluid rounded-start"
+                                         alt="{{ book.name }}" style="margin-left: -12px;">
+                                </div>
+                                <div class="col-md-8">
+                                    <div class="card-body">
+                                        <h5 class="card-title">{{ book.name }}</h5>
+                                        <p class="card-text"><small>{{ book.author.name }}</small></p>
+                                        <p class="card-text">{{ book.price }}</p>
+                                        <p class="card-text"><small
+                                                    class="text-body-secondary">{{ book.releaseDate }}</small>
+                                        </p>
+                                        <button class="btn" style="background-color: #2d6a4f"><a
+                                                    href="{{ path('app_book_show', {'id': book.id}) }}"
+                                                    class="text-light">Voir
+                                                plus</a></button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    {% else %}
+                        <h2>Pas de livre aujourd'hui :(</h2>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
